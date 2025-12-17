@@ -1,0 +1,24 @@
+import { Outlet } from "react-router";
+import SideBar from "../components/SideBar";
+import TopBar from "../components/TopBar";
+import Player from "../components/Player";
+
+function MainLayout() {
+return (
+    <div className="h-screen grid grid-rows-[1fr_auto]">
+      <div className="grid grid-cols-[240px_1fr] overflow-hidden">
+        <SideBar />
+
+        <main className="flex flex-col overflow-y-auto">
+          <TopBar />
+          <div className="flex-1 p-6">
+            <Outlet />
+          </div>
+        </main>
+      </div>
+
+      <Player />
+    </div>
+  );}
+
+export default MainLayout

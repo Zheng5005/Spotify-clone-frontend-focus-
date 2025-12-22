@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <>
-      <div className="mt-15 grid md:grid-cols-5 gap-4 sm:grid-cols-2">
+      <div className="mt-15 grid md:grid-cols-5 gap-4 sm:grid-cols-2 text-white">
         <ul>
           <li className='text-3x1 font-bold'>Spotify</li>
           <li className='text-3x1'>Who we are</li>

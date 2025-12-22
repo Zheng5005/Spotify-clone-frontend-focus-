@@ -1,14 +1,22 @@
-function Card() {
+interface CardProps {
+  name: string;
+  image: string;
+}
+
+function Card({ name, image }: CardProps) {
   return (
     <>
-      <img 
-        className={`object-cover rounded-full`}
-        src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?auto=format&amp;fit=crop&amp;q=80&amp;w=1160" 
-        alt={`Artist`} 
-        style={{ width: 200, height: 200 }}
-      />
-      <p>Name</p>
-      <p>Artist</p>
+      <div className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 cursor-pointer">
+        <img
+          src={image}
+          alt={name}
+          className="w-10 h-10 rounded-full object-cover"
+        />
+
+        <span className="text-sm text-neutral-200 truncate">
+          {name}
+        </span>
+      </div>
     </>
   )
 }

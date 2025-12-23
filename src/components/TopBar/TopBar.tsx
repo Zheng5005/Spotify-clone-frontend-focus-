@@ -1,6 +1,7 @@
 // src/components/Topbar/Topbar.tsx
 import { Home, Search } from "lucide-react";
 import { IconButton } from "./IconButton";
+import { Link } from "react-router";
 
 export default function Topbar() {
   return (
@@ -10,18 +11,22 @@ export default function Topbar() {
     >
       {/* Left: Logo */}
       <div className="flex items-center">
-        <img
-          src="/spotify.svg"
-          alt="Spotify"
-          className="h-8 w-auto"
-        />
+        <Link to="/">
+          <img
+            src="/spotify.svg"
+            alt="Spotify"
+            className="h-8 w-auto"
+          />
+        </Link>
       </div>
 
       {/* Center: Navigation Icons */}
       <nav className="flex justify-center gap-4">
-        <IconButton label="Home">
-          <Home size={20} />
-        </IconButton>
+        <Link to="/">
+          <IconButton label="Home">
+            <Home size={20} />
+          </IconButton>
+        </Link>
 
         <IconButton label="Search">
           <Search size={20} />

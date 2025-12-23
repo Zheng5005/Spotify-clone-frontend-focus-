@@ -7,7 +7,7 @@ export function IconButton({ children, label }: IconButtonProps) {
   return (
     <button
       aria-label={label}
-      className="p-2 rounded-full text-neutral-300
+      className="p-2 rounded-full text-neutral-300 cursor-pointer
                  hover:text-white hover:bg-neutral-800
                  focus:outline-none focus:ring-2 focus:ring-white"
     >

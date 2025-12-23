@@ -1,7 +1,8 @@
 import { Home, Search } from "lucide-react"
 import { artists } from "../../data/artist"
 import SidebarItem from "./SideBarItem"
-import Card from "../Card"
+import { Link } from "react-router"
+import { Card } from "../Cards/Card"
 
 function SideBar() {
   return (
@@ -10,7 +11,7 @@ function SideBar() {
 
         {/* Navigation */}
         <nav className="space-y-2">
-          <SidebarItem icon={<Home size={20} />} label="Home" />
+          <Link to="/"><SidebarItem icon={<Home size={20} />} label="Home" /></Link>
           <SidebarItem icon={<Search size={20} />} label="Search" />
         </nav>
 

@@ -35,7 +35,7 @@ export function BigCard({ name, image }: CardProps) {
           src={image}
           alt={name}
           className="w-32 h-32 sm:w-36 sm:h-36
-                     rounded-full object-cover mx-auto"
+                     rounded-sm object-cover mx-auto"
         />
 
         {/* Play button (hover only) */}

@@ -3,6 +3,7 @@ import { PlayButtonGreen } from "../Player/PlayBtn";
 interface CardProps {
   name: string;
   image: string;
+  type: string;
 }
 
 export function Card({ name, image }: CardProps) {
@@ -23,7 +24,7 @@ export function Card({ name, image }: CardProps) {
   )
 }
 
-export function BigCard({ name, image }: CardProps) {
+export function BigCard({ name, image, type }: CardProps) {
   return (
     <div
       className="group relative p-4 rounded-sm cursor-pointer
@@ -52,10 +53,10 @@ export function BigCard({ name, image }: CardProps) {
 
       {/* Text */}
       <div className="mt-4 text-center">
-        <h6 className="text-base font-semibold text-white truncate">
+        <h6 className="text-base font-semibold text-white truncate text-clip text-wrap">
           {name}
         </h6>
-        <p className="text-sm text-neutral-400">Single</p>
+        <p className="text-sm text-neutral-400">{type}</p>
       </div>
     </div>
   );

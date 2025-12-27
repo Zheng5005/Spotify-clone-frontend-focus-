@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import InnerLayout from "./layouts/InnerLayout"
 import SongPage from "./pages/SongPage"
 import ArtistPage from "./pages/ArtistPage"
+import AlbumPage from "./pages/AlbumsPage"
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />}/>
           <Route path="/artist" element={<ArtistPage />}/>
           <Route path="/song" element={<SongPage />}/>
+          <Route path="/albums" element={<AlbumPage />}/>
         </Route>
       </Route>
     </Routes>

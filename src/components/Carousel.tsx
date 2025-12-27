@@ -1,6 +1,7 @@
 import { Link } from "react-router";
 import type { Artist } from "../data/artist";
 import type { Song } from "../data/songs";
+import type { Album } from "../data/albums";
 import Circle from "./Cards/Circle";
 import { BigCard } from "./Cards/Card";
 
@@ -8,7 +9,7 @@ interface CarouselProps {
   title: string;
   type: string;
   route: string;
-  array: Artist[] | Song[];
+  array: Artist[] | Song[] | Album[];
 }
 
 export default function Carousel({ title, array, type, route }: CarouselProps) {
@@ -43,7 +44,7 @@ export default function Carousel({ title, array, type, route }: CarouselProps) {
               key={obj.id}
               className="snap-start shrink-0"
               >
-              <BigCard name={obj.name} image={obj.image} />
+              <BigCard name={obj.name} image={obj.image} type={type} />
               </div>
             ))
           )

@@ -16,6 +16,7 @@ function ArtistPage() {
               key={artist.id}
               name={artist.name}
               image={artist.image}
+              id={artist.id}
             />
           ))}
         </div>

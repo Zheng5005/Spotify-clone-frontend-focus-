@@ -1,4 +1,3 @@
-
 import { BigCard } from "../components/Cards/Card"
 import { albums } from "../data/albums"
 
@@ -18,6 +17,7 @@ function AlbumPage() {
               name={album.name}
               image={album.image}
               type="Album"
+              id={album.id}
             />
           ))}
         </div>

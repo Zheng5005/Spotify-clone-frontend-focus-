@@ -1,11 +1,13 @@
+import { Link } from "react-router";
 import { PlayButtonGreen } from "../Player/PlayBtn";
 
 interface CircleProps {
   name: string;
   image: string;
+  id: string;
 }
 
-export default function Circle({ name, image }: CircleProps) {
+export default function Circle({ name, image, id }: CircleProps) {
   return (
     <div
       className="group relative p-4 rounded-lg cursor-pointer
@@ -13,12 +15,14 @@ export default function Circle({ name, image }: CircleProps) {
     >
       {/* Image wrapper */}
       <div className="relative">
-        <img
-          src={image}
-          alt={name}
-          className="w-32 h-32 sm:w-36 sm:h-36
+        <Link to={`/artist/${id}`}>
+          <img
+            src={image}
+            alt={name}
+            className="w-32 h-32 sm:w-36 sm:h-36
                      rounded-full object-cover mx-auto"
-        />
+          />
+        </Link>
 
         {/* Play button (hover only) */}
         <div
@@ -33,12 +37,12 @@ export default function Circle({ name, image }: CircleProps) {
       </div>
 
       {/* Text */}
-      <div className="mt-4 text-center">
+      <Link to={`/artist/${id}`} className="mt-4 text-center">
         <h6 className="text-base font-semibold text-white truncate">
           {name}
         </h6>
         <p className="text-sm text-neutral-400">Artist</p>
-      </div>
+      </Link>
     </div>
   );
 }

@@ -17,6 +17,7 @@ function SongPage() {
               name={song.name}
               image={song.image}
               type="Single"
+              id={song.id}
             />
           ))}
         </div>

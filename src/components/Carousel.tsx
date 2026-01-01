@@ -35,7 +35,7 @@ export default function Carousel({ title, array, type, route }: CarouselProps) {
               key={obj.id}
               className="snap-start shrink-0"
               >
-              <Circle name={obj.name} image={obj.image} />
+              <Circle name={obj.name} image={obj.image} id={obj.id} />
               </div>
             ))
           ) : (
@@ -44,7 +44,7 @@ export default function Carousel({ title, array, type, route }: CarouselProps) {
               key={obj.id}
               className="snap-start shrink-0"
               >
-              <BigCard name={obj.name} image={obj.image} type={type} />
+              <BigCard name={obj.name} image={obj.image} type={type} id={obj.id} />
               </div>
             ))
           )

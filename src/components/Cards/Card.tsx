@@ -1,15 +1,17 @@
+import { Link } from "react-router";
 import { PlayButtonGreen } from "../Player/PlayBtn";
 
 interface CardProps {
   name: string;
   image: string;
-  type: string;
+  type?: string;
+  id?: string;
 }
 
-export function Card({ name, image }: CardProps) {
+export function Card({ name, image, id }: CardProps) {
   return (
     <>
-      <div className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 cursor-pointer">
+      <Link className="flex items-center gap-3 p-2 rounded-md hover:bg-neutral-800 cursor-pointer" to={`/artist/${id}`} >
         <img
           src={image}
           alt={name}
@@ -19,12 +21,12 @@ export function Card({ name, image }: CardProps) {
         <span className="text-sm text-neutral-200 truncate">
           {name}
         </span>
-      </div>
+      </Link>
     </>
   )
 }
 
-export function BigCard({ name, image, type }: CardProps) {
+export function BigCard({ name, image, type, id }: CardProps) {
   return (
     <div
       className="group relative p-4 rounded-sm cursor-pointer
@@ -32,12 +34,14 @@ export function BigCard({ name, image, type }: CardProps) {
     >
       {/* Image wrapper */}
       <div className="relative">
-        <img
-          src={image}
-          alt={name}
-          className="w-32 h-32 sm:w-36 sm:h-36
+        <Link to={type == "Album" ? `/album/${id}` : `/song/${id}`}>
+          <img
+            src={image}
+           alt={name}
+            className="w-32 h-32 sm:w-36 sm:h-36
                      rounded-sm object-cover mx-auto"
-        />
+          />
+        </Link>
 
         {/* Play button (hover only) */}
         <div
@@ -52,12 +56,12 @@ export function BigCard({ name, image, type }: CardProps) {
       </div>
 
       {/* Text */}
-      <div className="mt-4 text-center">
+      <Link to={type == "Album" ? `/album/${id}` : `/song/${id}`} className="mt-4 text-center">
         <h6 className="text-base font-semibold text-white truncate text-clip text-wrap">
           {name}
         </h6>
         <p className="text-sm text-neutral-400">{type}</p>
-      </div>
+      </Link>
     </div>
   );
 }

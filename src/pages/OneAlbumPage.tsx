@@ -77,7 +77,7 @@ export default function OneAlbumPage() {
               </span>
 
               <span>{song.name}</span>
-              {/*<span>{song?.duration?}</span> */}
+              <span>{song.duration}</span>
             </div>
 
           ))}

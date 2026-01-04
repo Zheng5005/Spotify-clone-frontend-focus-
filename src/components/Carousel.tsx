@@ -8,7 +8,7 @@ import { BigCard } from "./Cards/Card";
 interface CarouselProps {
   title: string;
   type: string;
-  route: string;
+  route?: string;
   array: Artist[] | Song[] | Album[];
 }
 
@@ -18,9 +18,12 @@ export default function Carousel({ title, array, type, route }: CarouselProps) {
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-2xl font-bold text-white">{title}</h2>
-        <Link to={route} className="text-sm text-green-400 hover:underline">
-          See All
-        </Link>
+        {
+          route && 
+          <Link to={route} className="text-sm text-green-400 hover:underline">
+            See All
+          </Link>
+        }
       </div>
 
       {/* Carousel */}

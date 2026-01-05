@@ -4,6 +4,7 @@ import { songs } from "../data/songs"
 import { PlayButtonGreen } from "../components/Player/PlayBtn"
 import Carousel from "../components/Carousel"
 import { artists } from "../data/artist"
+import Table from "../components/Table"
 
 export default function OneArtistPage() {
   const { id: artistId } = useParams()
@@ -51,34 +52,15 @@ export default function OneArtistPage() {
       </section>
 
       {/* POPULAR SONGS */}
-      <section className="px-8">
+      <div className="px-8 p-2">
         <h2 className="text-2xl font-bold mb-4">Popular</h2>
-
-        <div className="flex flex-col gap-2">
-          {artistSongs.map((song, index) => (
-            <div
-              key={song.id}
-              className="group grid grid-cols-[40px_1fr_80px] items-center p-2 
-                         hover:bg-white/10 rounded-md cursor-pointer"
-            >
-              <span className="group-hover:hidden">{index + 1}</span>
-              <span className="hidden group-hover:block">
-                <PlayButtonGreen size={12}/>
-              </span>
-
-              <span>{song.name}</span>
-              <span className="text-gray-400">{song.duration}</span>
-            </div>
-          ))}
-        </div>
-      </section>
+        <Table showHeaders={false} albumSongs={artistSongs} />
+      </div>
 
       {/* ARTIST ALBUMS */}
-      <section className="px-8 mt-10">
-        <h2 className="text-2xl font-bold mb-4"></h2>
+      <div className="px-8 mt-10">
         <Carousel title="Discography" array={artistAlbums} type="Album" />
-      </section>
-
+      </div>
     </div>
   )
 }

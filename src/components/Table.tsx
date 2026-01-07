@@ -34,7 +34,7 @@ function Table({song, albumSongs, showHeaders = true}: TableProps) {
 
             {/* Index is hidden on hover */}
             <span className="hidden group-hover:flex">
-              <PlayButtonGreen size={12}/>
+              <PlayButtonGreen size={12} song={song}/>
             </span>
 
             <span>{song.name}</span>
@@ -56,7 +56,7 @@ function Table({song, albumSongs, showHeaders = true}: TableProps) {
 
           {/* Index is hidden on hover */}
           <span className="hidden group-hover:flex">
-            <PlayButtonGreen size={12}/>
+            <PlayButtonGreen size={12} song={song}/>
           </span>
 
           <span>{song.name}</span>

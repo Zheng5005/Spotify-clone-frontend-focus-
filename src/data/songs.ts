@@ -5,6 +5,16 @@ export interface Song {
   albumID: string;
   artistID: string;
   duration: string;
+  //audioUrl: "string";
+}
+
+export interface CurrentSong {
+  id: string;
+  name: string;
+  image: string;
+  artistID: string;
+  duration: string;
+  audioUrl: "string";
 }
 
 export const songs: Song[] = [

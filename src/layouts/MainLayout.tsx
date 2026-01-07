@@ -2,6 +2,7 @@ import { Outlet } from "react-router";
 import TopBar from "../components/TopBar/TopBar";
 import Player from "../components/Player/Player";
 import SideBar from "../components/SideBar/SideBar";
+import AudioController from "../components/Player/AudioController";
 
 function MainLayout() {
 return (
@@ -18,6 +19,7 @@ return (
       </div>
 
       <Player />
+      <AudioController />
     </div>
   );}
 

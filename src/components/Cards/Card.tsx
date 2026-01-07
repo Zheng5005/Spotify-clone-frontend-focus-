@@ -1,7 +1,9 @@
 import { Link } from "react-router";
 import { PlayButtonGreen } from "../Player/PlayBtn";
+import type { Song } from "../../data/songs";
 
 interface CardProps {
+  song?: Song;
   name: string;
   image: string;
   type?: string;
@@ -26,7 +28,7 @@ export function Card({ name, image, id }: CardProps) {
   )
 }
 
-export function BigCard({ name, image, type, id }: CardProps) {
+export function BigCard({ name, image, type, id, song }: CardProps) {
   return (
     <div
       className="group relative p-4 rounded-sm cursor-pointer
@@ -51,7 +53,7 @@ export function BigCard({ name, image, type, id }: CardProps) {
                      group-hover:translate-y-0
                      transition-all duration-200"
         >
-          <PlayButtonGreen />
+          <PlayButtonGreen song={type == "Single" ? song : null}/>
         </div>
       </div>
 

@@ -1,4 +1,3 @@
-// src/components/Player/Player.tsx
 import {
   SkipBack,
   SkipForward,
@@ -8,8 +7,26 @@ import {
 } from "lucide-react";
 import { ControlButton } from "./ControlBtn";
 import { PlayButton } from "./PlayBtn";
+import { useDispatch, useSelector } from "react-redux";
+import { playSong, tooglePlay } from "../../store/playerSlice";
+import { artists } from "../../data/artist";
 
 export default function Player() {
+  const dispatch = useDispatch()
+  const { currentSong, isPlaying } = useSelector((state: any) => state.player)
+
+  function handleSelection() {
+    if (isPlaying) {
+      dispatch(tooglePlay())
+    } else {
+      dispatch(playSong(currentSong))
+    }
+  }
+
+  if (!currentSong) return null
+
+  const artist = artists.find((ar) => ar.id === currentSong?.artistID)
+
   return (
     <footer
       className="h-24 bg-black border-t border-black
@@ -18,17 +35,19 @@ export default function Player() {
       {/* Left: Track Info */}
       <div className="flex items-center gap-4">
         <img
-          src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4"
+          src={currentSong.image}
           alt="Album cover"
           className="w-14 h-14 rounded-md object-cover"
         />
 
         <div className="min-w-0">
           <p className="text-sm text-white truncate">
-            Song Title
+            {/* Song Title */}
+            {currentSong.name}
           </p>
           <p className="text-xs text-neutral-400 truncate">
-            Artist Name
+            {/* Artist Name */}
+            {artist?.name}
           </p>
         </div>
       </div>
@@ -44,7 +63,7 @@ export default function Player() {
             <SkipBack size={18} />
           </ControlButton>
 
-          <PlayButton />
+          <PlayButton handleClick={handleSelection} isPlaying={isPlaying} />
 
           <ControlButton label="Next">
             <SkipForward size={18} />
@@ -63,7 +82,7 @@ export default function Player() {
             <div className="h-1 w-1/3 bg-white rounded-full" />
           </div>
 
-          <span className="text-xs text-neutral-400">3:45</span>
+          <span className="text-xs text-neutral-400">{currentSong.duration}</span>
         </div>
       </div>
 

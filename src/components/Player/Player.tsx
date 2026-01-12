@@ -8,12 +8,15 @@ import {
 import { ControlButton } from "./ControlBtn";
 import { PlayButton } from "./PlayBtn";
 import { useDispatch, useSelector } from "react-redux";
-import { playSong, tooglePlay } from "../../store/playerSlice";
+import { playSong, seek, tooglePlay } from "../../store/playerSlice";
 import { artists } from "../../data/artist";
+import { formatTime } from "../../helpers/time";
+import { throttle } from "../../helpers/throttle";
 
 export default function Player() {
   const dispatch = useDispatch()
-  const { currentSong, isPlaying } = useSelector((state: any) => state.player)
+  const { currentSong, isPlaying, currentTime, duration } = useSelector((state: any) => state.player)
+  const progress = duration ? (currentTime / duration) * 100 : 0
 
   function handleSelection() {
     if (isPlaying) {
@@ -21,6 +24,12 @@ export default function Player() {
     } else {
       dispatch(playSong(currentSong))
     }
+  }
+
+  function handleSeek(e: React.ChangeEvent<HTMLInputElement>) {
+    const value = Number(e.target.value)
+    const newTime = (value / 100) * duration
+    dispatch(seek(newTime))
   }
 
   if (!currentSong) return null
@@ -75,14 +84,23 @@ export default function Player() {
         </div>
 
         {/* Progress Bar */}
-        <div className="flex items-center gap-2 w-full max-w-md">
-          <span className="text-xs text-neutral-400">0:00</span>
+        <div className="flex items-center gap-3 w-full">
+          <span className="text-xs text-gray-400">
+            {formatTime(currentTime)}
+          </span>
 
-          <div className="flex-1 h-1 bg-neutral-700 rounded-full">
-            <div className="h-1 w-1/3 bg-white rounded-full" />
-          </div>
+          <input
+            type="range"
+            min={0}
+            max={100}
+            value={progress}
+            onChange={throttle(handleSeek, 1000)}
+            className="w-full"
+          />
 
-          <span className="text-xs text-neutral-400">{currentSong.duration}</span>
+          <span className="text-xs text-gray-400">
+            {formatTime(duration)}
+          </span>
         </div>
       </div>
 

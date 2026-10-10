@@ -1,6 +1,6 @@
 export function throttle(func: Function, wait: number) {
   let timeout: number | null = null;
-  return function(...args: any[]) {
+  return function(this: any, ...args: any[]) {
     if (!timeout) {
       // Execute the function
       func.apply(this, args);
